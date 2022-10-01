@@ -1,26 +1,29 @@
 extends Sprite
 
+const dist = 120;
+
 func _input(event):
 	if event.is_action_pressed("ui_up"):
-		if not $RayCast2D_up.is_colliding():
-			$"../map".translate(Vector2(0,120))
-		checkTile()
+		tryMoveTo(Vector2(0, dist), $RayCast2D_up);
 	if event.is_action_pressed("ui_down"):
-		if not $RayCast2D_down.is_colliding():
-			$"../map".translate(Vector2(0,-120))
-		checkTile()
+		tryMoveTo(Vector2(0, -dist), $RayCast2D_down);
 	if event.is_action_pressed("ui_left"):
-		if not $RayCast2D_left.is_colliding():
-			$"../map".translate(Vector2(120,0))
-		checkTile()
+		tryMoveTo(Vector2(dist, 0), $RayCast2D_left);
 	if event.is_action_pressed("ui_right"):
-		if not $RayCast2D_right.is_colliding():
-			$"../map".translate(Vector2(-120,0))
-		checkTile()
+		tryMoveTo(Vector2(-dist, 0), $RayCast2D_right);
+	
 
-onready var tentacleMap = self.get_parent().get_node("map/TileMap2")
+onready var tentacleMap = self.get_parent().get_node("map/ObjectMap")
 
-func checkTile():
-	var cell = tentacleMap.world_to_map(tentacleMap.to_local(self.global_position))
-	if tentacleMap.get_cellv(cell) != -1:
+func tryMoveTo(pos, rayCast2D):
+	checkTile(self.global_position - pos)
+	if not rayCast2D.is_colliding():
+		$"../map".translate(pos)
+
+func checkTile(pos):
+	var cell = tentacleMap.world_to_map(tentacleMap.to_local(pos))
+	var cellv = tentacleMap.get_cellv(cell);
+	if cellv >= 0 and cellv <= 4:
 		var _scene = self.get_tree().change_scene("res://Scenes/you_dead.tscn")
+	elif cellv == 5:
+		print('NOTE')
