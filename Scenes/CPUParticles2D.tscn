@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+position = Vector2( 640, -100 )
+amount = 120
+lifetime = 10.0
+speed_scale = 3.0
+emission_shape = 2
+emission_rect_extents = Vector2( 1280, 0 )
