@@ -5,7 +5,7 @@ func _ready():
 	$HBoxContainer/VBoxContainer/HBoxContainer/menuButton.disabled = true
 	if Autoload.victory == "Teleporter":
 		$HBoxContainer/VBoxContainer/Label.text = "You have successfully escaped through the teleporter!"
-		$HBoxContainer/VBoxContainer/Label3.text = "You tell your government about the horrifying entity you encountered but are quickly swept away to a detention centre. You hear news that the Dimension Gate is blocked and no one will ever be allowed in every again."
+		$HBoxContainer/VBoxContainer/Label3.text = "You tell your government about the horrifying entity you encountered but are quickly swept away to a detention centre. You hear news that the Dimension Gate is blocked and no one will ever be allowed in ever again."
 	else:
 		pass #Add stuff for alternative endings.
 	$HBoxContainer.show()

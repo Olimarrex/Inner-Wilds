@@ -2,14 +2,7 @@ extends Control
 
 func _ready():
 	$CenterContainer/VBoxContainer/VBoxContainer/TextureButton.disabled = true
-	$CenterContainer/VBoxContainer/VBoxContainer.hide()
 	$AnimationPlayer.play("tentacleDeath")
-	yield($AnimationPlayer, "animation_finished")
-	$AnimationPlayer.play("textChange")
-	yield($AnimationPlayer, "animation_finished")
-	$CenterContainer/VBoxContainer/VBoxContainer.show()
-	$CenterContainer/VBoxContainer/HBoxContainer/TextureRect.hide()
-	$AnimationPlayer.play("textIn")
 	yield($AnimationPlayer, "animation_finished")
 	$CenterContainer/VBoxContainer/VBoxContainer/TextureButton.disabled = false
 
