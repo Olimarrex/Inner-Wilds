@@ -24,7 +24,7 @@ func tryMoveTo(pos, rayCast2D):
 func checkTile(pos):
 	var cell = tentacleMap.world_to_map(tentacleMap.to_local(pos))
 	var cellv = tentacleMap.get_cellv(cell);
-	if cellv >= 0 and cellv <= 4:
+	if cellv == 7:
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	elif cellv == 5:
 		print('NOTE')
