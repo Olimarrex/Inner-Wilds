@@ -26,4 +26,5 @@ func checkTile():
 	if tentacleMap.get_cellv(cell) != -1:
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	if cell == Vector2(2, 22):
+		Autoload.victory = "Teleporter"
 		var _scene = self.get_tree().change_scene("res://Scenes/Victory.tscn")
