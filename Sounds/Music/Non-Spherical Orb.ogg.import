@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Non-Spherical Orb.ogg-712853916e2c0a3ead734bf2f5120e16.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Music/Non-Spherical Orb.ogg"
+dest_files=[ "res://.import/Non-Spherical Orb.ogg-712853916e2c0a3ead734bf2f5120e16.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

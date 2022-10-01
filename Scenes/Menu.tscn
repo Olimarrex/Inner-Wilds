@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Art/UI/MenuUI/menuButtonHovered.png" type="Texture" id=1]
 [ext_resource path="res://Art/UI/MenuUI/menuButtonPressed.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Font/BAHNSCHRIFT.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://Art/menuBackground.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Menu.gd" type="Script" id=6]
+[ext_resource path="res://Sounds/Music/Non-Spherical Orb.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Other Sounds/select.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -120,6 +122,15 @@ text = "instructions"
 align = 1
 valign = 1
 uppercase = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+bus = "Music"
+
+[node name="menuSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX"
 
 [connection signal="button_down" from="CenterContainer/VBoxContainer/HBoxContainer/playButton" to="." method="_on_playButton_button_down"]
 [connection signal="button_up" from="CenterContainer/VBoxContainer/HBoxContainer/playButton" to="." method="_on_playButton_button_up"]
