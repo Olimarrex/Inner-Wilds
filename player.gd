@@ -14,6 +14,7 @@ func _input(event):
 	
 
 onready var tentacleMap = self.get_parent().get_node("map/ObjectMap")
+onready var baseMap = self.get_parent().get_node("map/TileMap")
 
 func tryMoveTo(pos, rayCast2D):
 	checkTile(self.global_position - pos)
@@ -27,3 +28,6 @@ func checkTile(pos):
 		var _scene = self.get_tree().change_scene("res://Scenes/you_dead.tscn")
 	elif cellv == 5:
 		print('NOTE')
+	if cell == Vector2(2, 22):
+		Autoload.victory = "Teleporter"
+		var _scene = self.get_tree().change_scene("res://Scenes/Victory.tscn")
