@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="you_dead" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 439.0
+margin_top = 249.0
+margin_right = 781.0
+margin_bottom = 386.0
+text = "YOU DEAD :P
+"
