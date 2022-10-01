@@ -58,8 +58,7 @@ autoplay = "time"
 anims/RESET = SubResource( 1 )
 anims/time = SubResource( 2 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2( 0.1, 0.1 )
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
 
