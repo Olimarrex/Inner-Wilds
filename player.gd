@@ -19,8 +19,11 @@ func _input(event):
 		checkTile()
 
 onready var tentacleMap = self.get_parent().get_node("map/TileMap2")
+onready var baseMap = self.get_parent().get_node("map/TileMap")
 
 func checkTile():
 	var cell = tentacleMap.world_to_map(tentacleMap.to_local(self.global_position))
 	if tentacleMap.get_cellv(cell) != -1:
-		var _scene = self.get_tree().change_scene("res://Scenes/you_dead.tscn")
+		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
+	if cell == Vector2(2, 22):
+		var _scene = self.get_tree().change_scene("res://Scenes/Victory.tscn")
