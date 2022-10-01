@@ -28,6 +28,6 @@ func checkTile(pos):
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	elif cellv == 5:
 		print('NOTE')
-	if cell == Vector2(2, 22):
+	elif cellv == 6:
 		Autoload.victory = "Teleporter"
 		var _scene = self.get_tree().change_scene("res://Scenes/Victory.tscn")
