@@ -14,7 +14,6 @@ func _ready():
 	for cell in cells:
 		var pos = (cell * Vector2(12, 12)) + Vector2(6, 6);
 		instance = teleporter.instance();
-		print(pos)
 		instance.transform.origin = pos;
 		$".".add_child(instance);
 		
@@ -26,7 +25,3 @@ func _ready():
 #		temp.global_transform.origin = Vector3(i[0]+1, 1, i[1]+1)
 #		$"../CSGCombiner".add_child(temp)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	print(instance.global_transform.origin)
