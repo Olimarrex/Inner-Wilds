@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sprites/TileWall.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Tile.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/TileTentacle.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Door.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Note.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/test shit/3d_test.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/test shit/3d_test.tscn" type="PackedScene" id=8]
@@ -93,20 +92,6 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
-8/name = "Door.png 8"
-8/texture = ExtResource( 4 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 0, 0, 12, 12 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape_one_way = false
-8/shape_one_way_margin = 0.0
-8/shapes = [  ]
-8/z_index = 0
 
 [sub_resource type="ViewportTexture" id=5]
 viewport_path = NodePath("3d_shit/Viewport")
@@ -129,12 +114,12 @@ tile_data = PoolIntArray( -262149, 8, 0, -131073, 8, 0, -65538, 5, 0, 131071, 6,
 script = ExtResource( 9 )
 
 [node name="3d_shit" type="Sprite" parent="."]
-scale = Vector2( 10, 10 )
+scale = Vector2( 5, 5 )
 texture = SubResource( 5 )
 flip_v = true
 
 [node name="Viewport" type="Viewport" parent="3d_shit"]
-size = Vector2( 120, 120 )
+size = Vector2( 286, 286 )
 transparent_bg = true
 
 [node name="3d_test" parent="3d_shit/Viewport" instance=ExtResource( 8 )]

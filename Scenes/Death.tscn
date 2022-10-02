@@ -183,6 +183,7 @@ margin_bottom = 429.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 250.0
 margin_bottom = 139.0
 
@@ -222,7 +223,6 @@ uppercase = true
 
 [node name="menuSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-bus = "SFX"
 
 [connection signal="button_down" from="CenterContainer/VBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="button_up" from="CenterContainer/VBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_button_up"]
