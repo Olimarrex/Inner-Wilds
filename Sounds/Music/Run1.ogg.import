@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Run1.ogg-1efdf8c6817efac794f3fa55e8e403ed.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Music/Run1.ogg"
+dest_files=[ "res://.import/Run1.ogg-1efdf8c6817efac794f3fa55e8e403ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
