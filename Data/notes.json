@@ -1,0 +1,22 @@
+{
+	"mission": {
+		"Title": "Transmission of Mission Details (Captain’s eyes only)",
+		"Body": "Below are the objectives of our current mission. You are to read what is listed, memorise them and then dispose of this note securely. Failure to do so will result in an immediate court martial.\n\nObjective 1 - Discover what locations or entities exist in the depths of the dimension.\n\nObjective 2 - Return safely to the frigate once sufficient information has been acquired.\n\n-Mission Control"
+	},
+	"coordinates": {
+		"Title": "Coordinates of the Frigate and its teleporter.",
+		"Body": "Frigate - 144, 441, 111\nTeleporter - 144, 441, 121"
+	},
+	"recipe": {
+		"Title": "Head Chef Rett's famous cake recipe",
+		"Body": "-Eggs\n-Reconstituted Fat (Grey box)\n-Flour\n-Sugar\n-Vanilla\n-A Special Secret ingredient!\n\nPlace the ingredients in a bowl in this order - Sugar, Fat, Eggs, Vanilla, Secret ingredient, Flour. Then mix all together and bake till the oven light turns green."
+	},
+	"secret": {
+		"Title": "Secret Ingredient! (Don’t give this to anyone!)",
+		"Body": "-A dash of Plutonium (Shhh)"
+	},
+	"vent": {
+		"Title": null,
+		"Body": "I fooled them all into thinking I am dead! Though I have to keep quiet as the vent that goes between the cockpit and the engine room has barely any space and if I make a noise they are sure to discover me. I have nothing else to do but write this and survive and the crumbs of cake I managed to bring with me. The cake is so good!"
+	}
+}
