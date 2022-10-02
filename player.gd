@@ -8,40 +8,50 @@ var playerComb = []
 var codeContainer
 
 func _input(event):
-	if interaction == false:
-		if event.is_action_pressed("ui_up"):
-			tryMoveTo(Vector2(0, dist), $RayCast2D_up);
-		if event.is_action_pressed("ui_down"):
-			tryMoveTo(Vector2(0, -dist), $RayCast2D_down);
-		if event.is_action_pressed("ui_left"):
-			tryMoveTo(Vector2(dist, 0), $RayCast2D_left);
-		if event.is_action_pressed("ui_right"):
-			tryMoveTo(Vector2(-dist, 0), $RayCast2D_right);
-	elif interaction == true:
-		if codeContainer.get_child_count() < combinationCount:
-			if event.is_action_pressed("ui_up"):
+	for key in directions:
+		var direction = directions[key];
+		if event.is_action_pressed(direction["action"]):
+			if interaction == false:
+				tryMoveTo(direction["dir"], direction["rayCast"])
+			elif interaction == true:
 				var newRect = TextureRect.new()
+				newRect.texture = load(direction["arrow"])
 				codeContainer.add_child(newRect)
-				newRect.texture = load("res://Art/UI/InteractionUI/upArrow.png")
-				playerComb.append("Up")
-			if event.is_action_pressed("ui_down"):
-				var newRect = TextureRect.new()
-				codeContainer.add_child(newRect)
-				newRect.texture = load("res://Art/UI/InteractionUI/downArrow.png")
-				playerComb.append("Down")
-			if event.is_action_pressed("ui_left"):
-				var newRect = TextureRect.new()
-				codeContainer.add_child(newRect)
-				newRect.texture = load("res://Art/UI/InteractionUI/leftArrow.png")
-				playerComb.append("Left")
-			if event.is_action_pressed("ui_right"):
-				var newRect = TextureRect.new()
-				codeContainer.add_child(newRect)
-				newRect.texture = load("res://Art/UI/InteractionUI/rightArrow.png")
-				playerComb.append("Right")
-			checkComb()
+				playerComb.append(direction["displayText"])
+				checkCombination()
 
-func checkComb():
+onready var directions = {
+	"up": {
+		"action": "ui_up",
+		"displayText": "Up",
+		"arrow": "res://Art/UI/InteractionUI/upArrow.png",
+		"rayCast": $RayCast2D_up,
+		"dir": Vector2(0, dist)
+	},
+	"left": {
+		"action": "ui_left",
+		"displayText": "Left",
+		"arrow": "res://Art/UI/InteractionUI/leftArrow.png",
+		"rayCast": $RayCast2D_left,
+		"dir": Vector2(dist, 0)
+	},
+	"right": {
+		"action": "ui_right",
+		"displayText": "Right",
+		"arrow": "res://Art/UI/InteractionUI/rightArrow.png",
+		"rayCast": $RayCast2D_right,
+		"dir": Vector2(-dist, 0)
+	},
+	"doiwn": {
+		"action": "ui_down",
+		"displayText": "Down",
+		"arrow": "res://Art/UI/InteractionUI/downArrow.png",
+		"rayCast": $RayCast2D_down,
+		"dir": Vector2(0, -dist)
+	}
+};
+
+func checkCombination():
 	if codeContainer.get_child_count() == combinationCount:
 		if playerComb == combination:
 			#insert correct noise.

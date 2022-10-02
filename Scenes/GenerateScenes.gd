@@ -12,13 +12,14 @@ onready var door = preload("res://Scenes/TileScenes/door.tscn")
 var instance
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Autoload.doors.clear();
 	place_scenes(get_used_cells_by_id(6), teleporter)
 	place_scenes(get_used_cells_by_id(7), tentacles)
 	place_scenes(get_used_cells_by_id(8), door)
 
 
 func place_scenes(XYs, instance):
-	var j = 0
+	var j = 0;
 	for i in XYs:
 		var temp = instance.instance()
 		temp.transform.origin = (i * Vector2(12, 12)) + Vector2(6, 6);
