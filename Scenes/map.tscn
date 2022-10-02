@@ -33,7 +33,7 @@ position = Vector2( -5.5, -29.9 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="StaticBody2D" parent="ObjectMap/door" index="0"]
-combination = [ "Up", "Up", "Up", "Up", NodePath("") ]
+combination = [ "Up", "Up", "Up", "Up" ]
 
 [node name="note1" parent="ObjectMap" instance=ExtResource( 2 )]
 position = Vector2( -18, -18.6 )
