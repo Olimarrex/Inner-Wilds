@@ -7,7 +7,7 @@ func _ready():
 func renderPhase(phase):
 	place_scenes(phaseMaps[phase].get_used_cells_by_id(6), teleporter)
 	place_scenes(phaseMaps[phase].get_used_cells_by_id(7), tentacles)
-	place_scenes(phaseMaps[phase].get_used_cells_by_id(8), door)	
+	#place_door(phaseMaps[phase].get_used_cells_by_id(8), door)	
 
 onready var phaseMaps = [
 	$ObjectMap,
@@ -34,6 +34,19 @@ func place_scenes(XYs, instance):
 		var temp = instance.instance()
 		temp.transform.origin = (i * Vector2(12, 12)) + Vector2(6, 6);
 		$ObjectMap.add_child(temp)
+		if instance == door:
+			temp.name = "door" + str(j) 
+			print (temp.name)
+			j += 1
+			Autoload.doors.append(temp)
+
+
+func place_door(XYs, instance):
+	var j = 0;
+	for i in XYs:
+		var temp = instance.instance()
+		temp.transform.origin = Vector3(i[0]+1, 0, i[1]+1)
+		$"3d_shit/Viewport/3d_test/CSGCombiner".add_child(temp)
 		if instance == door:
 			temp.name = "door" + str(j) 
 			print (temp.name)
