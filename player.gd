@@ -66,7 +66,7 @@ func checkCombination():
 			playerComb.clear()
 			codeContainer.modulate = Color8(255, 255, 255, 255)
 
-onready var tentacleMap = self.get_parent().get_node("map/ObjectMap")
+onready var objectMap = self.get_parent().get_node("map/ObjectMap")
 onready var baseMap = self.get_parent().get_node("map/TileMap")
 
 func tryMoveTo(pos, rayCast2D):
@@ -75,8 +75,8 @@ func tryMoveTo(pos, rayCast2D):
 		$"../map".translate(pos)
 
 func checkTile(pos):
-	var cell = tentacleMap.world_to_map(tentacleMap.to_local(pos))
-	var cellv = tentacleMap.get_cellv(cell);
+	var cell = objectMap.world_to_map(objectMap.to_local(pos))
+	var cellv = objectMap.get_cellv(cell);
 	if cellv == 5:
 		print('NOTE')
 	elif cellv == 6:
@@ -86,7 +86,9 @@ func checkTile(pos):
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	elif cellv == 8:
 		for i in Autoload.doors:
-			if tentacleMap.to_local(pos) == tentacleMap.to_local(i.global_position):
+			if objectMap.to_local(pos) == objectMap.to_local(i.global_position):
+				print(Autoload.doorInteractionsDic)
+				print(i.name)
 				combination = Autoload.doorInteractionsDic[i.name]
 				combinationCount = Autoload.doorInteractionsDic[i.name].size()
 				print(combinationCount)
