@@ -58,20 +58,22 @@ onready var baseMap = self.get_parent().get_node("map/TileMap")
 func tryMoveTo(pos, rayCast2D, objrayCast):
 	checkTile(self.global_position - pos)
 	if not objrayCast.is_colliding():
-		print('no')
+		#nothing to boop
 		if not rayCast2D.is_colliding():
 			$"../map".translate(pos)
-	elif objrayCast.get_collider().boop():
-		print('yes')
+	elif (objrayCast.get_collider().boop()):
+		#we booped it, start interacting and not moving.
 		interactor = objrayCast.get_collider();
+	else:
+		#tried to boop but failed
 		if not rayCast2D.is_colliding():
-				$"../map".translate(pos)
+			$"../map".translate(pos)
 
 func checkTile(pos):
 	var cell = objectMap.world_to_map(objectMap.to_local(pos))
 	var cellv = objectMap.get_cellv(cell);
 	if cellv == 5:
-		print('NOTE')
+		return #note
 	elif cellv == 6:
 		Autoload.victory = "Teleporter"
 		var _scene = self.get_tree().change_scene("res://Scenes/Victory.tscn")

@@ -12,12 +12,17 @@ func _ready():
 
 onready var container = self.get_parent().get_parent().get_parent().get_parent()
 
+var isOpen = false;
+
 var playerComb = []
 func boop():
-	var interactionNode = preload("res://Scenes/Instances/doorInteraction.tscn").instance()
-	container.add_child(interactionNode)
-	codeContainer = container.get_node("doorInteraction/CenterContainer/TextureRect/CenterContainer/HBoxContainer")
-	return true;
+	if(!isOpen):
+		var interactionNode = preload("res://Scenes/Instances/doorInteraction.tscn").instance()
+		container.add_child(interactionNode)
+		codeContainer = container.get_node("doorInteraction/CenterContainer/TextureRect/CenterContainer/HBoxContainer")
+		return true;
+	else:
+		return false;
 
 func onInput(direction): 
 	var newRect = TextureRect.new()
@@ -29,22 +34,23 @@ func onInput(direction):
 	return false;
 	
 func checkCombination():
+	var shouldStop = false;
+	print(playerComb, combination)
 	if codeContainer.get_child_count() == combination.size():
 		if playerComb == combination:
 			#insert correct noise.
 			container.get_node("doorInteraction").queue_free();
-			playerComb.clear();
-			return true;
+			shouldStop = true;
+			isOpen = true;
 		else:
 			#insert sound buzzer wrong.
 			container.get_node("doorInteraction/AnimationPlayer").play("boxfade")
 			yield(container.get_node("doorInteraction/AnimationPlayer"), "animation_finished")
-			print("failed")
 			for i in codeContainer.get_children():
 				i.queue_free()
 			codeContainer.modulate = Color8(255, 255, 255, 255)
-			return false;
 		playerComb.clear()
+		return shouldStop
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

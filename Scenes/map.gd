@@ -31,7 +31,6 @@ onready var tentacles = preload("res://Scenes/TileScenes/Tentacle.tscn")
 onready var door = preload("res://Scenes/TileScenes/door.tscn")
 
 func place_tiles(tileMap, targetMap):
-	var j = 0;
 	var XYs = tileMap.get_used_cells()
 	var a = [];
 	for i in XYs:
