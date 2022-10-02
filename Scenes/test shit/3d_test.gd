@@ -8,8 +8,6 @@ extends Spatial
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
-	
 	$place_walls.plase_walls($"../../../TileMap".get_used_cells_by_id(1))
 
 
@@ -19,3 +17,6 @@ func _process(delta):
 	pos = Vector3((pos[0]-700)/120 - 0.5 , 0, (pos[1]-420)/120 - 0.5)
 	$"../..".global_transform.origin = Vector2(700,420)
 	$CSGCombiner.global_transform.origin = pos
+
+func place_walls(XYs):
+	$place_walls.plase_walls(XYs)

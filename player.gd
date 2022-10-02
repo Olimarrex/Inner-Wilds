@@ -87,8 +87,6 @@ func checkTile(pos):
 	elif cellv == 8:
 		for i in Autoload.doors:
 			if objectMap.to_local(pos) == objectMap.to_local(i.global_position):
-				print(Autoload.doorInteractionsDic)
-				print(i.name)
 				combination = Autoload.doorInteractionsDic[i.name]
 				combinationCount = Autoload.doorInteractionsDic[i.name].size()
 				print(combinationCount)

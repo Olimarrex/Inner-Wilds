@@ -20,8 +20,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "time"
+resource_name = "TentacleThing"
 length = 10.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureProgress:value")
 tracks/0/interp = 1
@@ -53,11 +54,6 @@ tracks/1/keys = {
 scale = Vector2( 10, 10 )
 script = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "time"
-anims/RESET = SubResource( 1 )
-anims/time = SubResource( 2 )
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
@@ -65,4 +61,11 @@ autoplay = true
 [node name="TextureProgress" type="TextureProgress" parent="."]
 margin_right = 25.0
 margin_bottom = 12.0
+value = 63.0
 texture_progress = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "TentacleThing"
+reset_on_save = false
+anims/RESET = SubResource( 1 )
+anims/TentacleThing = SubResource( 2 )

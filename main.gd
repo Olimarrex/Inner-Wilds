@@ -13,12 +13,13 @@ func _ready():
 # Called when the node enters the scene tree for the first time.
 func next_phase():
 	phase += 1;
+	$map.renderPhase(phase);
 	if phase == 1:
+		#Red Lights
 		#Screen Shake
-		#Red Stuff
 		pass;
 	elif phase == 2:
-		$map.renderPhase(2);
+		pass;
 		#Alarms & Tentacles first appear. Brig blocked off
 	elif phase == 3:
 		pass;
