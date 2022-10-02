@@ -2,8 +2,8 @@ extends Sprite
 
 const dist = 120;
 var interaction = false
-var combinationCount = 4
-var combination = ["Left", "Left", "Right", "Up"]
+var combinationCount
+var combination = []
 var playerComb = []
 var codeContainer
 
@@ -75,6 +75,12 @@ func checkTile(pos):
 	elif cellv == 7:
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	elif cellv == 8:
+		for i in Autoload.doors:
+			if tentacleMap.to_local(pos) == tentacleMap.to_local(i.global_position):
+				combination = Autoload.doorInteractionsDic[i.name]
+				combinationCount = Autoload.doorInteractionsDic[i.name].size()
+				print(combinationCount)
+				print(combination)
 		interaction = true
 		var interactionNode = preload("res://Scenes/Instances/doorInteraction.tscn").instance()
 		self.get_parent().add_child(interactionNode)

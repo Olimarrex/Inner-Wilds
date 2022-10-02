@@ -18,7 +18,12 @@ func _ready():
 
 
 func place_scenes(XYs, instance):
+	var j = 0
 	for i in XYs:
 		var temp = instance.instance()
 		temp.transform.origin = (i * Vector2(12, 12)) + Vector2(6, 6);
 		$".".add_child(temp)
+		if instance == door:
+			temp.name = "door" + str(j) 
+			j += 1
+			Autoload.doors.append(temp)

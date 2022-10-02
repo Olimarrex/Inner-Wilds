@@ -1,0 +1,5 @@
+{
+	"door0": ["Left", "Left", "Right", "Up"],
+	"door1": ["Up", "Up", "Up", "Up", "Up"],
+	"door2": ["Left", "Down", "Right", "Up", "Left", "Down"]
+}
