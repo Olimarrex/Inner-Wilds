@@ -26,15 +26,6 @@ onready var phaseTileMaps = [
 	false,
 ]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var teleporter = preload("res://Scenes/TileScenes/Teleporter.tscn")
 onready var tentacles = preload("res://Scenes/TileScenes/Tentacle.tscn")
 onready var door = preload("res://Scenes/TileScenes/door.tscn")

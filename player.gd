@@ -15,10 +15,11 @@ func _input(event):
 				tryMoveTo(direction["dir"], direction["rayCast"])
 			elif interaction == true:
 				var newRect = TextureRect.new()
-				newRect.texture = load(direction["arrow"])
-				codeContainer.add_child(newRect)
-				playerComb.append(direction["displayText"])
-				checkCombination()
+				if (codeContainer.get_child_count() < combinationCount):
+					newRect.texture = load(direction["arrow"])
+					codeContainer.add_child(newRect)
+					playerComb.append(direction["displayText"])
+					checkCombination()
 
 onready var directions = {
 	"up": {
@@ -63,8 +64,8 @@ func checkCombination():
 			yield(self.get_parent().get_node("doorInteraction/AnimationPlayer"), "animation_finished")
 			for i in codeContainer.get_children():
 				i.queue_free()
-			playerComb.clear()
 			codeContainer.modulate = Color8(255, 255, 255, 255)
+		playerComb.clear()
 
 onready var objectMap = self.get_parent().get_node("map/ObjectMap")
 onready var baseMap = self.get_parent().get_node("map/TileMap")
