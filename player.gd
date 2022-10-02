@@ -12,7 +12,7 @@ func _input(event):
 		var direction = directions[key];
 		if event.is_action_pressed(direction["action"]):
 			if interaction == false:
-				tryMoveTo(direction["dir"], direction["rayCast"])
+				tryMoveTo(direction["dir"], direction["rayCast"], direction["objrayCast"])
 			elif interaction == true:
 				var newRect = TextureRect.new()
 				if (codeContainer.get_child_count() < combinationCount):
@@ -27,6 +27,7 @@ onready var directions = {
 		"displayText": "Up",
 		"arrow": "res://Art/UI/InteractionUI/upArrow.png",
 		"rayCast": $RayCast2D_up,
+		"objrayCast": $RayCast2D_obj_up,
 		"dir": Vector2(0, dist)
 	},
 	"left": {
@@ -34,6 +35,7 @@ onready var directions = {
 		"displayText": "Left",
 		"arrow": "res://Art/UI/InteractionUI/leftArrow.png",
 		"rayCast": $RayCast2D_left,
+		"objrayCast": $RayCast2D_obj_left,
 		"dir": Vector2(dist, 0)
 	},
 	"right": {
@@ -41,6 +43,7 @@ onready var directions = {
 		"displayText": "Right",
 		"arrow": "res://Art/UI/InteractionUI/rightArrow.png",
 		"rayCast": $RayCast2D_right,
+		"objrayCast": $RayCast2D_obj_right,
 		"dir": Vector2(-dist, 0)
 	},
 	"doiwn": {
@@ -48,6 +51,7 @@ onready var directions = {
 		"displayText": "Down",
 		"arrow": "res://Art/UI/InteractionUI/downArrow.png",
 		"rayCast": $RayCast2D_down,
+		"objrayCast": $RayCast2D_obj_down,
 		"dir": Vector2(0, -dist)
 	}
 };
@@ -70,10 +74,16 @@ func checkCombination():
 onready var objectMap = self.get_parent().get_node("map/ObjectMap")
 onready var baseMap = self.get_parent().get_node("map/TileMap")
 
-func tryMoveTo(pos, rayCast2D):
+func tryMoveTo(pos, rayCast2D, objrayCast):
 	checkTile(self.global_position - pos)
-	if not rayCast2D.is_colliding():
-		$"../map".translate(pos)
+	if not objrayCast.is_colliding():
+		print('no')
+		if not rayCast2D.is_colliding():
+			$"../map".translate(pos)
+	elif objrayCast.get_collider().boop():
+		print('yes')
+		if not rayCast2D.is_colliding():
+				$"../map".translate(pos)
 
 func checkTile(pos):
 	var cell = objectMap.world_to_map(objectMap.to_local(pos))
@@ -86,7 +96,9 @@ func checkTile(pos):
 	elif cellv == 7:
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	elif cellv == 8:
+		return
 		for i in Autoload.doors:
+			return
 			if objectMap.to_local(pos) == objectMap.to_local(i.global_position):
 				combination = Autoload.doorInteractionsDic[i.name]
 				combinationCount = Autoload.doorInteractionsDic[i.name].size()

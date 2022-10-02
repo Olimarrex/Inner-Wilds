@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
+
 
 [ext_resource path="res://TileSets/map.tres" type="TileSet" id=1]
 [ext_resource path="res://TileSets/TileSet.tres" type="TileSet" id=3]
 [ext_resource path="res://Scenes/map.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/TileScenes/door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/test shit/3d_test.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/test shit/3d_test.tscn" type="PackedScene" id=8]
 
@@ -28,6 +30,13 @@ tile_data = PoolIntArray( -262149, 8, 0, -131073, 8, 0, -65538, 5, 0, 131071, 6,
 
 [node name="Phase2ObjectMap" type="TileMap" parent="."]
 visible = false
+
+[node name="door" parent="ObjectMap" instance=ExtResource( 5 )]
+position = Vector2( -5.5, -29.9 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Phase2Map" type="TileMap" parent="."]
+
 scale = Vector2( 10, 10 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 12, 12 )
@@ -53,3 +62,5 @@ transparent_bg = true
 
 [node name="3d_test" parent="3d_shit/Viewport" instance=ExtResource( 8 )]
 script = ExtResource( 7 )
+
+[editable path="3d_shit/Viewport/3d_test"]
