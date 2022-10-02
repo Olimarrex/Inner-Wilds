@@ -9,7 +9,7 @@ func renderPhase(phase):
 		place_tiles(phaseObjectMaps[phase], $ObjectMap);
 		place_scenes(phaseObjectMaps[phase].get_used_cells_by_id(6), teleporter)
 		place_scenes(phaseObjectMaps[phase].get_used_cells_by_id(7), tentacles)
-		#place_door(phaseObjectMaps[phase].get_used_cells_by_id(8), door)	
+		#place_door(phaseObjectMaps[phase].get_used_cells_by_id(8), door)
 	
 	if(phaseTileMaps[phase]):
 		place_tiles(phaseTileMaps[phase], $TileMap);

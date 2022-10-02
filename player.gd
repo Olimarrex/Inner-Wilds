@@ -1,25 +1,21 @@
 extends Sprite
 
 const dist = 120;
-var interaction = false
-var combinationCount
-var combination = []
-var playerComb = []
+var interactor = null;
 var codeContainer
 
 func _input(event):
 	for key in directions:
 		var direction = directions[key];
 		if event.is_action_pressed(direction["action"]):
-			if interaction == false:
+			if interactor == null:
 				tryMoveTo(direction["dir"], direction["rayCast"], direction["objrayCast"])
-			elif interaction == true:
-				var newRect = TextureRect.new()
-				if (codeContainer.get_child_count() < combinationCount):
-					newRect.texture = load(direction["arrow"])
-					codeContainer.add_child(newRect)
-					playerComb.append(direction["displayText"])
-					checkCombination()
+			else:
+				var interactionDone = interactor.onInput(direction)
+				if (typeof(interactionDone) == TYPE_OBJECT && interactionDone.is_class("GDScriptFunctionState")):
+					pass;
+				elif(interactionDone):
+					interactor = null;
 
 onready var directions = {
 	"up": {
@@ -56,21 +52,6 @@ onready var directions = {
 	}
 };
 
-func checkCombination():
-	if codeContainer.get_child_count() == combinationCount:
-		if playerComb == combination:
-			#insert correct noise.
-			self.get_parent().get_node("doorInteraction").queue_free()
-			interaction = false
-		else:
-			#insert sound buzzer wrong.
-			self.get_parent().get_node("doorInteraction/AnimationPlayer").play("boxfade")
-			yield(self.get_parent().get_node("doorInteraction/AnimationPlayer"), "animation_finished")
-			for i in codeContainer.get_children():
-				i.queue_free()
-			codeContainer.modulate = Color8(255, 255, 255, 255)
-		playerComb.clear()
-
 onready var objectMap = self.get_parent().get_node("map/ObjectMap")
 onready var baseMap = self.get_parent().get_node("map/TileMap")
 
@@ -82,6 +63,7 @@ func tryMoveTo(pos, rayCast2D, objrayCast):
 			$"../map".translate(pos)
 	elif objrayCast.get_collider().boop():
 		print('yes')
+		interactor = objrayCast.get_collider();
 		if not rayCast2D.is_colliding():
 				$"../map".translate(pos)
 
@@ -96,15 +78,4 @@ func checkTile(pos):
 	elif cellv == 7:
 		var _scene = self.get_tree().change_scene("res://Scenes/Death.tscn")
 	elif cellv == 8:
-		return
-		for i in Autoload.doors:
-			return
-			if objectMap.to_local(pos) == objectMap.to_local(i.global_position):
-				combination = Autoload.doorInteractionsDic[i.name]
-				combinationCount = Autoload.doorInteractionsDic[i.name].size()
-				print(combinationCount)
-				print(combination)
-		interaction = true
-		var interactionNode = preload("res://Scenes/Instances/doorInteraction.tscn").instance()
-		self.get_parent().add_child(interactionNode)
-		codeContainer = self.get_parent().get_node("doorInteraction/CenterContainer/TextureRect/CenterContainer/HBoxContainer")
+		return #door
