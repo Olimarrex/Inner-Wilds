@@ -33,7 +33,7 @@ position = Vector2( -5.5, -29.9 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="StaticBody2D" parent="ObjectMap/door" index="0"]
-combination = [ "Up", "Up", "Up", "Up" ]
+combination = [ "Up", "Up", "Up", "Up", NodePath("") ]
 
 [node name="note1" parent="ObjectMap" instance=ExtResource( 2 )]
 position = Vector2( -18, -18.6 )
@@ -58,7 +58,6 @@ format = 1
 tile_data = PoolIntArray( -65548, 1, 0, -65547, 1, 0, -65546, 1, 0, -12, 1, 0, -11, 0, 0, -10, 0, 0, -9, 0, 0, 65524, 1, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 131060, 1, 0, 131061, 0, 0, 131062, 0, 0, 131063, 0, 0, 196596, 1, 0, 196597, 1, 0, 196598, 1, 0 )
 
 [node name="3d_shit" type="Sprite" parent="."]
-visible = false
 scale = Vector2( 5, 5 )
 texture = SubResource( 5 )
 flip_v = true

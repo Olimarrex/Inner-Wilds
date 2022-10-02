@@ -3,7 +3,7 @@ extends Node2D
 
 # Declare member variables here. Examples:
 # var a = 2
-export(Array) var combination
+export(Array, String) var combination
 var codeContainer
 
 # Called when the node enters the scene tree for the first time.
